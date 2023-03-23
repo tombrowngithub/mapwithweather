@@ -1,5 +1,7 @@
 import React, {useRef, useEffect, useState} from "react";
 import mapboxgl from "mapbox-gl";
+// @ts-ignore
+import MapboxWorker from 'worker-loader/mapbox-gl/dist/mapbox-gl-csp-worker';
 import {CiSearch} from 'react-icons/ci';
 import geoJson from "./chicago-parks.json";
 import NavBar from "./components/NavBar";
@@ -27,6 +29,7 @@ const weatherApi = {
 const token = "pk.eyJ1IjoidG9tYnJvd24zIiwiYSI6ImNsZmdteXZqYTNhZ3MzeXBjNW1xczloZDgifQ.5dnZhnEskNaSnHs92Sh2PQ";
 mapboxgl.accessToken = token;
 let map: mapboxgl.Map;
+
 export default function Map() {
     const mapContainerRef = useRef<HTMLDivElement | null>(null);
     const [weather, setWeather] = useState<Weather>({});
